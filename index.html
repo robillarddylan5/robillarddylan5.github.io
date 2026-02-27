@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dylan Robillard — Information Systems Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1d4ed8;
+      --blue-light: #3b82f6;
+      --accent: #f59e0b;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-300: #cbd5e1;
+      --gray-500: #64748b;
+      --gray-700: #334155;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 8px 24px rgba(0,0,0,0.06);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--gray-50); color: var(--gray-700); line-height: 1.6; }
+
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-100);
+      padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--gray-500); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 6rem 2rem 4rem;
+      background: linear-gradient(135deg, #0f1f3d 0%, #1e3a6e 60%, #1d4ed8 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-inner { max-width: 820px; margin: 0 auto; position: relative; }
+    .hero-tag {
+      display: inline-block; background: rgba(245,158,11,0.15); color: var(--accent);
+      border: 1px solid rgba(245,158,11,0.3); padding: 0.3rem 1rem; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 1.5rem; animation: fadeUp 0.6s ease both;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700; color: white; line-height: 1.1; margin-bottom: 1rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.75); max-width: 600px; margin-bottom: 2.5rem; animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+    .btn { padding: 0.8rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+    .btn-primary { background: var(--accent); color: var(--navy); }
+    .btn-primary:hover { background: #fbbf24; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.4); }
+    .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+    .role-chip-label { font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-top: 2.5rem; margin-bottom: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; animation: fadeUp 0.6s 0.38s ease both; }
+    .role-chips { display: flex; gap: 0.75rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.4s ease both; }
+    .role-chip { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.9); padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.82rem; font-weight: 500; }
+
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--navy); margin-bottom: 1rem; }
+    .section-sub { color: var(--gray-500); max-width: 560px; margin-bottom: 3rem; line-height: 1.7; }
+
+    #about { background: white; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-text p { color: var(--gray-500); margin-bottom: 1rem; line-height: 1.75; }
+    .edu-card { background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: 14px; padding: 1.5rem; margin-top: 2rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .edu-icon { font-size: 1.8rem; }
+    .edu-info h4 { font-weight: 700; color: var(--navy); font-size: 0.95rem; }
+    .edu-info p { color: var(--gray-500); font-size: 0.85rem; margin: 0; }
+    .about-visual { background: linear-gradient(135deg, var(--navy), var(--blue)); border-radius: 16px; padding: 2.5rem; color: white; }
+    .about-visual h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1.5rem; }
+    .skill-row { margin-bottom: 1.2rem; }
+    .skill-label { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; }
+    .skill-bar { height: 6px; background: rgba(255,255,255,0.15); border-radius: 100px; overflow: hidden; }
+    .skill-fill { height: 100%; border-radius: 100px; background: var(--accent); }
+
+    #skills { background: var(--gray-50); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .skill-card { background: white; border: 1px solid var(--gray-100); border-radius: 12px; padding: 1.75rem; transition: box-shadow 0.2s, transform 0.2s; }
+    .skill-card:hover { box-shadow: var(--card-shadow); transform: translateY(-2px); }
+    .skill-icon { width: 44px; height: 44px; background: var(--gray-50); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; border: 1px solid var(--gray-100); }
+    .skill-card h4 { font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .skill-card p { font-size: 0.82rem; color: var(--gray-500); line-height: 1.6; }
+
+    #courses { background: white; }
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+    .course-card { border: 1px solid var(--gray-100); border-radius: 12px; padding: 1.4rem; transition: box-shadow 0.2s, border-color 0.2s; }
+    .course-card:hover { box-shadow: var(--card-shadow); border-color: var(--gray-300); }
+    .course-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: rgba(29,78,216,0.07); padding: 0.2rem 0.6rem; border-radius: 100px; display: inline-block; margin-bottom: 0.75rem; }
+    .course-card h4 { font-weight: 600; color: var(--navy); font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .course-card p { font-size: 0.82rem; color: var(--gray-500); line-height: 1.6; }
+
+    #projects { background: var(--gray-50); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .project-card { background: white; border: 1px solid var(--gray-100); border-radius: 14px; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
+    .project-card:hover { box-shadow: var(--card-shadow); transform: translateY(-3px); }
+    .project-top { height: 110px; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; }
+    .project-body { padding: 1.5rem; }
+    .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .tag { background: var(--gray-100); color: var(--gray-500); font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .project-body h3 { color: var(--navy); font-weight: 600; margin-bottom: 0.5rem; font-size: 1rem; }
+    .project-body p { font-size: 0.875rem; color: var(--gray-500); margin-bottom: 1.25rem; line-height: 1.65; }
+    .project-links { display: flex; gap: 0.75rem; }
+    .project-link { font-size: 0.82rem; font-weight: 600; text-decoration: none; color: var(--blue); }
+    .project-link:hover { color: var(--blue-light); }
+    .project-card.placeholder { border-style: dashed; border-color: var(--gray-300); }
+    .project-card.placeholder .project-top { background: var(--gray-50); }
+
+    #contact { background: var(--navy); }
+    #contact .section-label { color: var(--accent); }
+    #contact .section-title { color: white; }
+    #contact .section-sub { color: rgba(255,255,255,0.6); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.5rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; text-decoration: none; color: white; transition: background 0.2s; }
+    .contact-link:hover { background: rgba(255,255,255,0.1); }
+    .contact-link-icon { font-size: 1.4rem; }
+    .contact-link-text span { display: block; font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+    .contact-link-text strong { font-weight: 600; font-size: 0.95rem; }
+    .open-to { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 14px; padding: 2rem; }
+    .open-to h3 { font-family: 'Playfair Display', serif; color: white; margin-bottom: 1.25rem; font-size: 1.25rem; }
+    .open-to-roles { display: flex; flex-direction: column; gap: 0.6rem; }
+    .open-role { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; color: rgba(255,255,255,0.85); }
+    .open-role::before { content: '→'; color: var(--accent); font-weight: 700; }
+
+    footer { background: #070f1e; padding: 1.5rem 2rem; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.3); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 768px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Dylan Robillard</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#courses">Coursework</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Open to Work · Atlanta, GA</div>
+    <h1>Dylan Robillard<br><span>Information Systems</span> Graduate</h1>
+    <p>B.B.A. Information Systems · Kennesaw State University. I build solutions at the intersection of business and technology — from data pipelines and dashboards to applications and process automation.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View My Projects</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+    <p class="role-chip-label">Open to roles in</p>
+    <div class="role-chips">
+      <span class="role-chip">Business Analysis</span>
+      <span class="role-chip">Data Analysis</span>
+      <span class="role-chip">Project Management</span>
+      <span class="role-chip">Systems Analysis</span>
+      <span class="role-chip">Software Development</span>
+      <span class="role-chip">& More</span>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">Technology Meets Business Thinking</h2>
+        <p>I'm Dylan — a recent Information Systems graduate from Kennesaw State University with a hands-on foundation in data analysis, software development, process automation, and systems design.</p>
+        <p>My degree sits at the crossroads of business and technology, which means I can speak both languages. I understand what stakeholders need and how to build systems that actually deliver it.</p>
+        <p>I'm actively looking for my first full-time role where I can contribute, grow, and keep building on what I've learned.</p>
+        <div class="edu-card">
+          <div class="edu-icon">🎓</div>
+          <div class="edu-info">
+            <h4>Kennesaw State University</h4>
+            <p>B.B.A. Information Systems · Atlanta, GA</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <h3>Skill Proficiency</h3>
+        <div class="skill-row">
+          <div class="skill-label"><span>Python</span><span>75%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>SQL & Database Design</span><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>Power BI / Tableau</span><span>75%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>Workflow Automation</span><span>70%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>Systems Analysis & Design</span><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>HTML / CSS / JavaScript</span><span>65%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Toolkit</p>
+    <h2 class="section-title">Skills & Technologies</h2>
+    <p class="section-sub">Built through coursework, projects, and self-directed learning across my time at KSU.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🐍</div>
+        <h4>Python</h4>
+        <p>Application development with Python and Tkinter; data manipulation with pandas and NumPy; scripting and automation.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <h4>SQL & Databases</h4>
+        <p>Relational database design, ERD modeling, normalization, and querying with MySQL and PostgreSQL.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <h4>Power BI & Tableau</h4>
+        <p>Dashboard development, KPI visualization, connecting data sources, and building automated reporting templates.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <h4>Workflow Automation</h4>
+        <p>Document process automation, Power Automate workflows, connecting business processes to BI reporting pipelines.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📋</div>
+        <h4>Systems Analysis</h4>
+        <p>Requirements gathering, use case modeling, process mapping, SDLC, project evaluation and documentation.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🌐</div>
+        <h4>Web Development</h4>
+        <p>HTML, CSS, JavaScript fundamentals and React basics for building and understanding front-end applications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="courses">
+  <div class="container">
+    <p class="section-label">Academic Background</p>
+    <h2 class="section-title">Relevant Coursework</h2>
+    <p class="section-sub">Key courses from my Information Systems degree that shaped my technical and analytical foundation. Update these with your actual course names from KSU.</p>
+    <div class="courses-grid">
+      <div class="course-card">
+        <span class="course-tag">Development</span>
+        <h4>Introduction to Programming</h4>
+        <p>Core programming concepts using Python — variables, control flow, functions, and building GUI applications with Tkinter.</p>
+      </div>
+      <div class="course-card">
+        <span class="course-tag">Data</span>
+        <h4>Database Management Systems</h4>
+        <p>Relational database theory, ERD modeling, normalization, and writing queries in SQL to manage and retrieve data.</p>
+      </div>
+      <div class="course-card">
+        <span class="course-tag">Analytics</span>
+        <h4>Business Intelligence & Analytics</h4>
+        <p>Designing dashboards in Power BI and Tableau; transforming raw data into actionable business insights and automating reporting workflows.</p>
+      </div>
+      <div class="course-card">
+        <span class="course-tag">Systems</span>
+        <h4>Systems Analysis & Design</h4>
+        <p>Full SDLC methodology — requirements elicitation, use cases, process modeling, and evaluating real-world IS projects.</p>
+      </div>
+      <div class="course-card">
+        <span class="course-tag">Management</span>
+        <h4>Project Management</h4>
+        <p>Agile and Waterfall frameworks, project scoping, scheduling, risk management, and stakeholder communication.</p>
+      </div>
+      <div class="course-card">
+        <span class="course-tag">Web</span>
+        <h4>Web Application Development</h4>
+        <p>Building front-end interfaces with HTML, CSS, JavaScript, and React. Understanding client-server architecture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub">Hands-on work completed through coursework and personal exploration. More coming soon — add your GitHub links once repos are set up.</p>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-top" style="background: linear-gradient(135deg, #1e3a6e, #1d4ed8);">🎰</div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag">Python</span><span class="tag">Tkinter</span><span class="tag">GUI</span></div>
+          <h3>Slot Machine Application</h3>
+          <p>A fully functional slot machine game built with Python and Tkinter. Demonstrates object-oriented programming, event-driven logic, and GUI design — core software development skills applied to a fun, real project.</p>
+          <div class="project-links">
+            <a href="#" class="project-link">→ View on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top" style="background: linear-gradient(135deg, #0f1f3d, #1e3a6e);">⚙️</div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag">Power BI</span><span class="tag">Workflow</span><span class="tag">Automation</span></div>
+          <h3>Document Automation → Power BI</h3>
+          <p>Designed a workflow to automate plan document processing and feed structured data directly into Power BI reporting templates — reducing manual effort and improving data consistency across reports.</p>
+          <div class="project-links">
+            <a href="#" class="project-link">→ View on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top" style="background: linear-gradient(135deg, #1d4ed8, #3b82f6);">🔍</div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag">Systems Analysis</span><span class="tag">Research</span><span class="tag">Documentation</span></div>
+          <h3>IS Project Case Analysis</h3>
+          <p>Analyzed real-world Information Systems projects to evaluate success factors, failure points, and lessons learned. Applied SDLC frameworks and structured documentation to present findings and recommendations.</p>
+          <div class="project-links">
+            <a href="#" class="project-link">→ View on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card placeholder">
+        <div class="project-top">➕</div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag">Coming Soon</span></div>
+          <h3>More Projects on the Way</h3>
+          <p>Additional projects from coursework and personal development will be added here as repos are set up. Check back soon or visit my GitHub.</p>
+          <div class="project-links">
+            <a href="#" class="project-link">→ GitHub Profile</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Let's Connect</p>
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-sub">I'm actively looking for my first role in tech. If you think I'd be a good fit for your team, I'd love to hear from you.</p>
+    <div class="contact-grid">
+      <div class="contact-links">
+        <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank" class="contact-link">
+          <div class="contact-link-icon">💼</div>
+          <div class="contact-link-text"><span>Connect professionally</span><strong>LinkedIn</strong></div>
+        </a>
+        <a href="https://github.com/YOUR_USERNAME" target="_blank" class="contact-link">
+          <div class="contact-link-icon">🐙</div>
+          <div class="contact-link-text"><span>See my code</span><strong>GitHub</strong></div>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#7c0513090e3c19111d1510521f1311" class="contact-link">
+          <div class="contact-link-icon">✉️</div>
+          <div class="contact-link-text"><span>Send me a message</span><strong><span class="__cf_email__" data-cfemail="30495f454270555d51595c1e535f5d">[email&#160;protected]</span></strong></div>
+        </a>
+      </div>
+      <div class="open-to">
+        <h3>Roles I'm Open To</h3>
+        <div class="open-to-roles">
+          <div class="open-role">Business Analyst</div>
+          <div class="open-role">Data Analyst</div>
+          <div class="open-role">Project Manager</div>
+          <div class="open-role">Systems Analyst</div>
+          <div class="open-role">Software Developer</div>
+          <div class="open-role" style="color: rgba(255,255,255,0.5); font-style: italic;">& more — open to all opportunities</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<foote
