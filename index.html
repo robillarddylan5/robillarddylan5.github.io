@@ -138,6 +138,37 @@
 
     footer { background: #070f1e; padding: 1.5rem 2rem; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.3); }
 
+    /* ── AI Tools Section ── */
+    #ai-tools { background: white; }
+    .ai-group { margin-bottom: 3rem; }
+    .ai-group:last-child { margin-bottom: 0; }
+    .ai-group-label {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blue);
+      margin-bottom: 1rem;
+    }
+    .ai-group-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--gray-100);
+    }
+    .ai-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+    .ai-tool-card {
+      background: var(--gray-50); border: 1px solid var(--gray-100);
+      border-radius: 12px; padding: 1.5rem;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .ai-tool-card:hover { box-shadow: var(--card-shadow); transform: translateY(-2px); border-color: var(--gray-300); }
+    .ai-tool-header { display: flex; align-items: center; gap: 0.75rem; }
+    .ai-tool-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+      border: 1px solid var(--gray-100); background: white;
+    }
+    .ai-tool-name { font-weight: 600; color: var(--navy); font-size: 0.95rem; }
+    .ai-tool-card p { font-size: 0.82rem; color: var(--gray-500); line-height: 1.65; margin: 0; }
+
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 768px) {
@@ -155,6 +186,7 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#courses">Coursework</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#ai-tools">AI Tools</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -368,6 +400,71 @@
   </div>
 </section>
 
+<section id="ai-tools">
+  <div class="container">
+    <p class="section-label">Workflow</p>
+    <h2 class="section-title">My AI Stack</h2>
+    <p class="section-sub">AI tools I use day-to-day to work faster and build better — organized by how I actually use them.</p>
+
+    <!-- Development -->
+    <div class="ai-group">
+      <div class="ai-group-label">Development</div>
+      <div class="ai-tools-grid">
+        <div class="ai-tool-card">
+          <div class="ai-tool-header">
+            <div class="ai-tool-icon">⚡</div>
+            <span class="ai-tool-name">Claude Code</span>
+          </div>
+          <p>My primary coding assistant. I use it for debugging Python scripts, writing SQL queries, and getting unstuck quickly without leaving the terminal.</p>
+        </div>
+        <div class="ai-tool-card">
+          <div class="ai-tool-header">
+            <div class="ai-tool-icon">🔁</div>
+            <span class="ai-tool-name">Replit</span>
+          </div>
+          <p>Browser-based IDE for spinning up quick prototypes and testing ideas without local setup. Useful for sharing runnable code during projects.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data & Analytics -->
+    <div class="ai-group">
+      <div class="ai-group-label">Data & Analytics</div>
+      <div class="ai-tools-grid">
+        <div class="ai-tool-card">
+          <div class="ai-tool-header">
+            <div class="ai-tool-icon">📊</div>
+            <span class="ai-tool-name">Power BI + Copilot</span>
+          </div>
+          <p>I use Power BI's AI features to speed up DAX formula writing, suggest visualizations, and summarize trends in dashboards I build for coursework.</p>
+        </div>
+        <div class="ai-tool-card">
+          <div class="ai-tool-header">
+            <div class="ai-tool-icon">🤖</div>
+            <span class="ai-tool-name">ChatGPT</span>
+          </div>
+          <p>General-purpose assistant for brainstorming analysis approaches, cleaning up documentation, and quickly explaining technical concepts I'm learning.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Design & Content -->
+    <div class="ai-group">
+      <div class="ai-group-label">Design & Content</div>
+      <div class="ai-tools-grid">
+        <div class="ai-tool-card">
+          <div class="ai-tool-header">
+            <div class="ai-tool-icon">🎨</div>
+            <span class="ai-tool-name">Midjourney</span>
+          </div>
+          <p>Used for generating visual assets and mockup imagery when designing dashboards or presentations that need polished supporting visuals.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section id="contact">
   <div class="container">
     <p class="section-label">Let's Connect</p>
@@ -383,9 +480,9 @@
           <div class="contact-link-icon">🐙</div>
           <div class="contact-link-text"><span>See my code</span><strong>GitHub</strong></div>
         </a>
-        <a href="mailto:robillarddylan5@gmail.com" class="contact-link">
+        <a href="/cdn-cgi/l/email-protection#374558555e5b5b564553534e5b56590277505a565e5b1954585a" class="contact-link">
           <div class="contact-link-icon">✉️</div>
-          <div class="contact-link-text"><span>Send me a message</span><strong>robillarddylan5@gmail.com</strong></div>
+          <div class="contact-link-text"><span>Send me a message</span><strong><span class="__cf_email__" data-cfemail="671508050e0b0b061503031e0b06095227000a060e0b4904080a">[email&#160;protected]</span></strong></div>
         </a>
       </div>
       <div class="open-to">
@@ -398,13 +495,13 @@
           <div class="open-role">Software Developer</div>
           <div class="open-role" style="color: rgba(255,255,255,0.5); font-style: italic;">& more — open to all opportunities</div>
         </div>
-      </div>
+         </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 Dylan Robillard · Built with HTML & CSS</p>
+  <p>© 2025 Dylan Robillard · Built with HTML, CSS &amp; a lot of coffee ☕</p>
 </footer>
 
 </body>
