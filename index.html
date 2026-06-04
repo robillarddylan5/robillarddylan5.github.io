@@ -169,10 +169,95 @@
     .ai-tool-name { font-weight: 600; color: var(--navy); font-size: 0.95rem; }
     .ai-tool-card p { font-size: 0.82rem; color: var(--gray-500); line-height: 1.65; margin: 0; }
 
+    /* ── Certifications Section ── */
+    #certifications { background: var(--gray-50); }
+    .cert-feature {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #0f1f3d 0%, #1e3a6e 60%, #1d4ed8 100%);
+      border-radius: 16px; padding: 2.5rem; color: white; margin-bottom: 2.5rem;
+    }
+    .cert-feature::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .cert-feature-grid { position: relative; display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.5rem; align-items: center; }
+    .cert-issuer { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.1rem; }
+    .cert-google-mark {
+      width: 48px; height: 48px; border-radius: 12px; background: white;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.6rem;
+      background: conic-gradient(from -45deg, #ea4335, #fbbc05, #34a853, #4285f4, #ea4335);
+      -webkit-text-fill-color: transparent; position: relative;
+    }
+    .cert-google-mark span {
+      width: 38px; height: 38px; border-radius: 9px; background: white;
+      display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+      -webkit-text-fill-color: initial; background-clip: initial;
+    }
+    .cert-issuer-text span { display: block; font-size: 0.75rem; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; text-transform: uppercase; }
+    .cert-issuer-text strong { font-size: 0.95rem; font-weight: 600; color: white; }
+    .cert-feature h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); color: white; line-height: 1.2; margin-bottom: 1.25rem; }
+    .cert-meta { display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .cert-meta-item span { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.15rem; }
+    .cert-meta-item strong { font-size: 1.05rem; font-weight: 700; color: var(--accent); }
+    .cert-tools { display: flex; gap: 0.55rem; flex-wrap: wrap; }
+    .cert-tool { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.9); padding: 0.35rem 0.9rem; border-radius: 100px; font-size: 0.8rem; font-weight: 500; }
+    .cert-verify-box { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25); border-radius: 14px; padding: 1.75rem; }
+    .cert-verify-box h4 { font-family: 'Playfair Display', serif; color: white; font-size: 1.1rem; margin-bottom: 0.6rem; }
+    .cert-verify-box p { font-size: 0.84rem; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 1.25rem; }
+    .cert-verify-btn { display: inline-block; background: var(--accent); color: var(--navy); padding: 0.7rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; }
+    .cert-verify-btn:hover { background: #fbbf24; transform: translateY(-1px); }
+
+    .cert-curriculum-label { display: flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem; }
+    .cert-curriculum-label::after { content: ''; flex: 1; height: 1px; background: var(--gray-100); }
+
+    .cert-image-wrap { margin-bottom: 2.5rem; }
+    .cert-image-frame {
+      display: block; position: relative; border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--gray-100); background: white;
+      box-shadow: var(--card-shadow); transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .cert-image-frame:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.1), 0 16px 40px rgba(15,31,61,0.12); }
+    .cert-image-frame img { display: block; width: 100%; height: auto; }
+    .cert-image-overlay {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(15,31,61,0); transition: background 0.25s; opacity: 0;
+    }
+    .cert-image-frame:hover .cert-image-overlay { background: rgba(15,31,61,0.35); opacity: 1; }
+    .cert-image-overlay span {
+      background: rgba(255,255,255,0.95); color: var(--navy); font-weight: 600; font-size: 0.85rem;
+      padding: 0.6rem 1.25rem; border-radius: 100px;
+    }
+    .cert-image-caption { text-align: center; font-size: 0.78rem; color: var(--gray-500); margin-top: 0.85rem; }
+
+    .cert-courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.85rem; margin-bottom: 2.5rem; }
+    .cert-course {
+      display: flex; align-items: flex-start; gap: 0.85rem;
+      background: white; border: 1px solid var(--gray-100); border-radius: 10px;
+      padding: 1rem 1.15rem; transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .cert-course:hover { box-shadow: var(--card-shadow); border-color: var(--gray-300); }
+    .cert-course-num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 7px; background: rgba(29,78,216,0.08); color: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; }
+    .cert-course-title { font-size: 0.86rem; font-weight: 500; color: var(--gray-700); line-height: 1.45; }
+
+    .cert-capstone {
+      display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+      background: white; border: 1px solid var(--gray-100); border-left: 4px solid var(--accent);
+      border-radius: 12px; padding: 1.75rem 2rem;
+    }
+    .cert-capstone-icon { font-size: 2.4rem; }
+    .cert-capstone-info { flex: 1; min-width: 220px; }
+    .cert-capstone-info .course-tag { margin-bottom: 0.6rem; }
+    .cert-capstone-info h4 { font-weight: 600; color: var(--navy); font-size: 1rem; margin-bottom: 0.35rem; }
+    .cert-capstone-info p { font-size: 0.85rem; color: var(--gray-500); line-height: 1.6; }
+    .cert-capstone-link { flex-shrink: 0; }
+
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 768px) {
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .cert-feature-grid { grid-template-columns: 1fr; gap: 1.75rem; }
       .nav-links { gap: 1.2rem; }
     }
   </style>
@@ -185,6 +270,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#courses">Coursework</a></li>
+    <li><a href="#certifications">Certifications</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#ai-tools">AI Tools</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -337,6 +423,81 @@
         <p>Building front-end interfaces with HTML, CSS, and Python. Understanding client-server architecture.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="container">
+    <p class="section-label">Credentials</p>
+    <h2 class="section-title">Professional Certification</h2>
+    <p class="section-sub">An industry-recognized credential earned outside the classroom to deepen my hands-on data analytics skills.</p>
+
+    <div class="cert-feature">
+      <div class="cert-feature-grid">
+        <div>
+          <div class="cert-issuer">
+            <div class="cert-google-mark"><span>G</span></div>
+            <div class="cert-issuer-text">
+              <span>Issued by Google · via Coursera</span>
+              <strong>Google Career Certificates</strong>
+            </div>
+          </div>
+          <h3>Google Data Analytics Professional Certificate</h3>
+          <div class="cert-meta">
+            <div class="cert-meta-item"><span>Duration</span><strong>~6 Months</strong></div>
+            <div class="cert-meta-item"><span>Courses</span><strong>9 Courses</strong></div>
+            <div class="cert-meta-item"><span>Completed</span><strong>May 2026</strong></div>
+          </div>
+          <div class="cert-tools">
+            <span class="cert-tool">Spreadsheets</span>
+            <span class="cert-tool">SQL</span>
+            <span class="cert-tool">Tableau</span>
+            <span class="cert-tool">Python</span>
+            <span class="cert-tool">Data Cleaning</span>
+            <span class="cert-tool">Data Visualization</span>
+          </div>
+        </div>
+        <div class="cert-verify-box">
+          <h4>Verified Credential</h4>
+          <p>A six-month program covering the full data analysis lifecycle — preparing, processing, analyzing, and sharing data for thoughtful action.</p>
+          <a href="https://coursera.org/verify/professional-cert/H2IZNGMUPP3I" target="_blank" rel="noopener noreferrer" class="cert-verify-btn">Verify Certificate →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-image-wrap">
+      <a class="cert-image-frame" href="images/google-data-analytics-cert.png" target="_blank" rel="noopener noreferrer">
+        <img src="images/google-data-analytics-cert.png" alt="Dylan Robillard — Google Data Analytics Professional Certificate" loading="lazy" />
+        <div class="cert-image-overlay"><span>Click to view full size →</span></div>
+      </a>
+      <p class="cert-image-caption">Official certificate issued by Google via Coursera · May 2026</p>
+    </div>
+
+    <div class="cert-curriculum-label">9-Course Curriculum</div>
+    <div class="cert-courses-grid">
+      <div class="cert-course"><div class="cert-course-num">1</div><div class="cert-course-title">Foundations: Data, Data, Everywhere</div></div>
+      <div class="cert-course"><div class="cert-course-num">2</div><div class="cert-course-title">Ask Questions to Make Data-Driven Decisions</div></div>
+      <div class="cert-course"><div class="cert-course-num">3</div><div class="cert-course-title">Prepare Data for Exploration</div></div>
+      <div class="cert-course"><div class="cert-course-num">4</div><div class="cert-course-title">Process Data from Dirty to Clean</div></div>
+      <div class="cert-course"><div class="cert-course-num">5</div><div class="cert-course-title">Analyze Data to Answer Questions</div></div>
+      <div class="cert-course"><div class="cert-course-num">6</div><div class="cert-course-title">Share Data Through the Art of Visualization</div></div>
+      <div class="cert-course"><div class="cert-course-num">7</div><div class="cert-course-title">Introduction to Data Analysis Using Python</div></div>
+      <div class="cert-course"><div class="cert-course-num">8</div><div class="cert-course-title">Google Data Analytics Capstone: Complete a Case Study</div></div>
+      <div class="cert-course"><div class="cert-course-num">9</div><div class="cert-course-title">Accelerate Your Job Search with AI</div></div>
+    </div>
+
+    <div class="cert-capstone">
+      <div class="cert-capstone-icon">🏆</div>
+      <div class="cert-capstone-info">
+        <span class="course-tag">Capstone Project</span>
+        <h4>Data Analytics Capstone Case Study</h4>
+        <p>Completed an end-to-end case study applying the full analysis process — asking the right questions, cleaning and processing raw data, analyzing for insights, and presenting findings with clear visualizations.</p>
+      </div>
+      <div class="cert-capstone-link">
+        <a href="https://github.com/robillarddylan5/google-data-analytics-capstone" target="_blank" rel="noopener noreferrer" class="project-link">→ View on GitHub</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
